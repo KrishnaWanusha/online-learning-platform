@@ -1,7 +1,7 @@
 import useMediaQuery from "@/hooks/useMediaQuery";
 import { SelectedPage } from "@/shared/types";
 import ActionButton from "@/components/ButtonComponent";
-import HomePageText from "@/assets/HomePageText.png";
+import Logo from "@/assets/HomeLogo.png";
 import HomePageGraphic from "@/assets/HomePageGraphic.png";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import { motion } from "framer-motion";
@@ -35,12 +35,16 @@ const Home = ({ setSelectedPage }: Props) => {
             }}
           >
             <div className="relative">
-              <div className="before:absolute before:-top-20 before:-left-20 before:z-[-1] md:before:content-evolvetext">
-                <img alt="home-page-text" src={HomePageText} />
+              <div className="md:before:content-learnify before:absolute before:-top-20 before:-left-20 before:z-[-1]">
+                <img
+                  alt="home-page-text"
+                  src={Logo}
+                  style={{ width: "300px", height: "auto", marginTop: 50 }}
+                />
               </div>
             </div>
 
-            <p className="text-md mt-8">
+            <p className="text-md mt-8 text-black">
               "Introducing our cutting-edge online learning platform – where
               unrivaled expertise meets unparalleled opportunities. Explore
               world-class courses designed to shape your mind and skillset,
@@ -66,13 +70,13 @@ const Home = ({ setSelectedPage }: Props) => {
             <ActionButton setSelectedPage={setSelectedPage}>
               Join Now
             </ActionButton>
-            <AnchorLink
+            {/* <AnchorLink
               className="text-sm font-bold text-primary-500 underline hover:text-secondary-500"
               onClick={() => setSelectedPage(SelectedPage.ContactUs)}
               href={`#${SelectedPage.ContactUs}`}
             >
               <p>Learn More</p>
-            </AnchorLink>
+            </AnchorLink> */}
           </motion.div>
         </div>
 

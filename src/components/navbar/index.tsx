@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
-import Logo from "@/assets/Logo.png";
+import Logo from "@/assets/logo.png";
 import Link from "./Link";
 import { SelectedPage } from "@/shared/types";
 import useMediaQuery from "@/hooks/useMediaQuery";
@@ -26,28 +26,40 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
         <div className={`${flexBetween} mx-auto w-5/6`}>
           <div className={`${flexBetween} w-full gap-16`}>
             {/* LEFT SIDE */}
-            <img alt="logo" src={Logo} />
+            <img
+              alt="logo"
+              src={Logo}
+              style={{ width: "150px", height: "auto" }}
+            />
 
             {/* RIGHT SIDE */}
             {isAboveMediumScreens ? (
               <div className={`${flexBetween} w-full`}>
-                <div className={`${flexBetween} gap-8 text-xl`}>
+                <div
+                  className={`${flexBetween} gap-8 text-lg ${
+                    isTopOfPage ? "text-black" : "text-white"
+                  } `}
+                >
                   <Link
                     page="Home"
+                    isTopOfPage
                     selectedPage={selectedPage}
                     setSelectedPage={setSelectedPage}
                   />
                   <Link
+                    isTopOfPage
                     page="Learn"
                     selectedPage={selectedPage}
                     setSelectedPage={setSelectedPage}
                   />
                   <Link
+                    isTopOfPage
                     page="My Courses"
                     selectedPage={selectedPage}
                     setSelectedPage={setSelectedPage}
                   />
                   <Link
+                    isTopOfPage
                     page="Teach on Learnify"
                     selectedPage={selectedPage}
                     setSelectedPage={setSelectedPage}
@@ -85,21 +97,25 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
           {/* MENU ITEMS */}
           <div className="ml-[33%] flex flex-col gap-10 text-2xl">
             <Link
+              isTopOfPage
               page="Home"
               selectedPage={selectedPage}
               setSelectedPage={setSelectedPage}
             />
             <Link
+              isTopOfPage
               page="Benefits"
               selectedPage={selectedPage}
               setSelectedPage={setSelectedPage}
             />
             <Link
+              isTopOfPage
               page="Our Classes"
               selectedPage={selectedPage}
               setSelectedPage={setSelectedPage}
             />
             <Link
+              isTopOfPage
               page="Contact Us"
               selectedPage={selectedPage}
               setSelectedPage={setSelectedPage}

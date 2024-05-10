@@ -5,15 +5,22 @@ type Props = {
   page: string;
   selectedPage: SelectedPage;
   setSelectedPage: (value: SelectedPage) => void;
+  isTopOfPage: boolean;
 };
 
-const Link = ({ page, selectedPage, setSelectedPage }: Props) => {
+const Link = ({ page, selectedPage, setSelectedPage, isTopOfPage }: Props) => {
   const lowerCasePage = page.toLowerCase().replace(/ /g, "") as SelectedPage;
 
   return (
     <AnchorLink
-      className={`${selectedPage === lowerCasePage ? "text-primary-500" : ""}
-        transition duration-500 hover:text-primary-300
+      className={`${
+        selectedPage === lowerCasePage
+          ? isTopOfPage
+            ? "text-teal-500"
+            : "text-black"
+          : ""
+      }
+        hover:text-gray transition duration-500
       `}
       href={`#${lowerCasePage}`}
       onClick={() => setSelectedPage(lowerCasePage)}
