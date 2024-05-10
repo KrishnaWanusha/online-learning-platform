@@ -4,7 +4,7 @@ import Logo from "@/assets/Logo.png";
 import Link from "./Link";
 import { SelectedPage } from "@/shared/types";
 import useMediaQuery from "@/hooks/useMediaQuery";
-import ActionButton from "@/shared/ActionButton";
+import ActionButton from "@/components/ButtonComponent";
 
 type Props = {
   isTopOfPage: boolean;
@@ -38,17 +38,17 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
                     setSelectedPage={setSelectedPage}
                   />
                   <Link
-                    page="Benefits"
+                    page="Learn"
                     selectedPage={selectedPage}
                     setSelectedPage={setSelectedPage}
                   />
                   <Link
-                    page="Our Classes"
+                    page="My Courses"
                     selectedPage={selectedPage}
                     setSelectedPage={setSelectedPage}
                   />
                   <Link
-                    page="Contact Us"
+                    page="Teach on Learnify"
                     selectedPage={selectedPage}
                     setSelectedPage={setSelectedPage}
                   />
@@ -56,7 +56,7 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
                 <div className={`${flexBetween} gap-8`}>
                   <p>Sign In</p>
                   <ActionButton setSelectedPage={setSelectedPage}>
-                    Become a Member
+                    Sign up
                   </ActionButton>
                 </div>
               </div>
