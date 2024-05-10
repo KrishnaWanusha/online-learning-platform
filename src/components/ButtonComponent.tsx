@@ -4,13 +4,22 @@ import { SelectedPage } from "../shared/types";
 
 type Props = {
   children: React.ReactNode;
+  color?: string;
+  hoverColor?: string;
   setSelectedPage: (value: SelectedPage) => void;
 };
 
-const ButtonComponent = ({ children, setSelectedPage }: Props) => {
+const ButtonComponent = ({
+  children,
+  color,
+  hoverColor,
+  setSelectedPage,
+}: Props) => {
   return (
     <AnchorLink
-      className="rounded-md bg-teal-500 px-10 py-2 hover:bg-gray-400 hover:text-white"
+      className={`rounded-md ${color ?? "bg-teal-500"} px-10 py-2 ${
+        hoverColor ?? "hover:bg-gray-400"
+      } transition duration-500 hover:text-white`}
       onClick={() => setSelectedPage(SelectedPage.ContactUs)}
       href={`#${SelectedPage.ContactUs}`}
     >
