@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import { SelectedPage } from "@/shared/types";
 
 import { Routes, BrowserRouter, Route } from "react-router-dom";
+import ContactUs from "./scenes/contactUs";
+import CourseAddPage from "./pages/course/add";
 
 function App() {
   const [selectedPage, setSelectedPage] = useState<SelectedPage>(
@@ -33,11 +35,13 @@ function App() {
           setSelectedPage={setSelectedPage}
         />
         <Routes>
+          <Route path="/course/add" element={<CourseAddPage />} />
           <Route
             path="/"
             element={
               <>
                 <Home setSelectedPage={setSelectedPage} />
+                <ContactUs setSelectedPage={setSelectedPage} />
                 <Footer />
               </>
             }
