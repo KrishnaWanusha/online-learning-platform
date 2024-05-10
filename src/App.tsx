@@ -41,11 +41,11 @@ function App() {
             element={
               <>
                 <Home setSelectedPage={setSelectedPage} />
-                <Footer />
               </>
             }
           />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </div>
   );
