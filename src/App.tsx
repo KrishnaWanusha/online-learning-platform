@@ -41,7 +41,6 @@ function App() {
             element={
               <>
                 <Home setSelectedPage={setSelectedPage} />
-                <ContactUs setSelectedPage={setSelectedPage} />
                 <Footer />
               </>
             }
