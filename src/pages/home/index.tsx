@@ -14,7 +14,7 @@ const Home = ({ setSelectedPage }: Props) => {
   const isAboveMediumScreens = useMediaQuery("(min-width:1060px)");
 
   return (
-    <section id="home" className="gap-16 bg-gray-20 py-10 md:h-full md:pb-0">
+    <section id="home" className="gap-16 bg-white py-10 md:h-full md:pb-0">
       {/* IMAGE AND MAIN HEADER */}
       <motion.div
         className="mx-auto w-5/6 items-center justify-center md:flex md:h-5/6"
@@ -40,10 +40,14 @@ const Home = ({ setSelectedPage }: Props) => {
               </div>
             </div>
 
-            <p className="mt-8 text-sm">
-              Unrivaled Gym. Unparalleled Training Fitness Classes. World Class
-              Studios to get the Body Shapes That you Dream of.. Get Your Dream
-              Body Now.
+            <p className="text-md mt-8">
+              "Introducing our cutting-edge online learning platform – where
+              unrivaled expertise meets unparalleled opportunities. Explore
+              world-class courses designed to shape your mind and skillset,
+              tailored to your aspirations. Transform your learning experience
+              with our dynamic studios and achieve the knowledge you've always
+              dreamed of. Get started now and unlock your full potential with
+              us!"
             </p>
           </motion.div>
 
