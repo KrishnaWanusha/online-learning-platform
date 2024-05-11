@@ -3,95 +3,71 @@ import React from "react";
 export default function CourseAddPage() {
   return (
     <>
-      <section className="mx-auto mt-20 max-w-4xl rounded-md bg-indigo-600 p-6 shadow-md dark:bg-gray-800">
+      <section className="mx-auto mt-32 mb-12 max-w-4xl rounded-md bg-teal-500 p-6 shadow-md dark:bg-gray-800">
         <h1 className="text-xl font-bold capitalize text-white dark:text-white">
-          Account settings
+          Add Course
         </h1>
         <form>
           <div className="mt-4 grid grid-cols-1 gap-6 sm:grid-cols-2">
             <div>
-              <label className="text-white dark:text-gray-200">Username</label>
+              <label className="text-white dark:text-gray-200">Title</label>
               <input
-                id="username"
+                id="title"
                 type="text"
-                className="mt-2 block w-full rounded-md border border-gray-300 bg-white px-4 py-2 text-gray-700 focus:border-blue-500 focus:outline-none focus:ring dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 dark:focus:border-blue-500"
+                className="mt-2 block w-full rounded-md border border-gray-300 bg-white px-4 py-2 text-gray-700 focus:border-gray-400 focus:outline-none focus:ring dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 dark:focus:border-gray-400"
               />
             </div>
 
             <div>
-              <label className="text-white dark:text-gray-200">
-                Email Address
-              </label>
-              <input
-                id="emailAddress"
-                type="email"
-                className="mt-2 block w-full rounded-md border border-gray-300 bg-white px-4 py-2 text-gray-700 focus:border-blue-500 focus:outline-none focus:ring dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 dark:focus:border-blue-500"
-              />
-            </div>
-
-            <div>
-              <label className="text-white dark:text-gray-200">Password</label>
-              <input
-                id="password"
-                type="password"
-                className="mt-2 block w-full rounded-md border border-gray-300 bg-white px-4 py-2 text-gray-700 focus:border-blue-500 focus:outline-none focus:ring dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 dark:focus:border-blue-500"
-              />
-            </div>
-
-            <div>
-              <label className="text-white dark:text-gray-200">
-                Password Confirmation
-              </label>
-              <input
-                id="passwordConfirmation"
-                type="password"
-                className="mt-2 block w-full rounded-md border border-gray-300 bg-white px-4 py-2 text-gray-700 focus:border-blue-500 focus:outline-none focus:ring dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 dark:focus:border-blue-500"
-              />
-            </div>
-            <div>
-              <label className="text-white dark:text-gray-200">Color</label>
-              <input
-                id="color"
-                type="color"
-                className="mt-2 block w-full rounded-md border border-gray-300 bg-white px-4 py-2 text-gray-700 focus:border-blue-500 focus:outline-none focus:ring dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 dark:focus:border-blue-500"
-              />
-            </div>
-            <div>
-              <label className="text-white dark:text-gray-200">Select</label>
-              <select className="mt-2 block w-full rounded-md border border-gray-300 bg-white px-4 py-2 text-gray-700 focus:border-blue-500 focus:outline-none focus:ring dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 dark:focus:border-blue-500">
-                <option>Surabaya</option>
-                <option>Jakarta</option>
-                <option>Tangerang</option>
-                <option>Bandung</option>
+              <label className="text-white dark:text-gray-200">Category</label>
+              <select className="mt-2 block w-full rounded-md border border-gray-300 bg-white px-4 py-2 text-gray-700 focus:border-gray-400 focus:outline-none focus:ring dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 dark:focus:border-blue-500">
+                <option>Information Technology</option>
+                <option>Engineering</option>
+                <option>Business</option>
+                <option>Science and Humanities</option>
               </select>
             </div>
+
             <div>
-              <label className="text-white dark:text-gray-200">Range</label>
+              <label className="text-white dark:text-gray-200">
+                Coordinator
+              </label>
               <input
-                id="range"
-                type="range"
-                className="mt-2 block w-full rounded-md border border-gray-300 bg-white py-2 text-gray-700 focus:border-blue-500 focus:outline-none focus:ring dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 dark:focus:border-blue-500"
+                id="coordinator"
+                type="text"
+                className="mt-2 block w-full rounded-md border border-gray-300 bg-white px-4 py-2 text-gray-700 focus:border-gray-400 focus:outline-none focus:ring dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 dark:focus:border-blue-500"
               />
             </div>
+            <div>
+              <label className="text-white dark:text-gray-200">Price</label>
+              <input
+                id="price"
+                type="number"
+                min={0}
+                className="mt-2 block w-full rounded-md border border-gray-300 bg-white px-4 py-2 text-gray-700 focus:border-gray-400 focus:outline-none focus:ring dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 dark:focus:border-blue-500"
+              />
+            </div>
+            <div>
+              <label className="text-white dark:text-gray-200">
+                Description
+              </label>
+              <textarea
+                id="textarea"
+                className="mt-2 block w-full rounded-md border border-gray-300 bg-white px-4 py-6 text-gray-700 focus:border-gray-400 focus:outline-none focus:ring dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 dark:focus:border-blue-500"
+              ></textarea>
+            </div>
+
             <div>
               <label className="text-white dark:text-gray-200">Date</label>
               <input
                 id="date"
                 type="date"
-                className="mt-2 block w-full rounded-md border border-gray-300 bg-white px-4 py-2 text-gray-700 focus:border-blue-500 focus:outline-none focus:ring dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 dark:focus:border-blue-500"
+                className="mt-2 block w-full rounded-md border border-gray-300 bg-white px-4 py-2 text-gray-700 focus:border-gray-400 focus:outline-none focus:ring dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 dark:focus:border-blue-500"
               />
             </div>
+
             <div>
-              <label className="text-white dark:text-gray-200">Text Area</label>
-              <textarea
-                id="textarea"
-                className="mt-2 block w-full rounded-md border border-gray-300 bg-white px-4 py-2 text-gray-700 focus:border-blue-500 focus:outline-none focus:ring dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 dark:focus:border-blue-500"
-              ></textarea>
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-white">
-                Image
-              </label>
+              <label className="block  font-medium text-white">Image</label>
               <div className="mt-1 flex justify-center rounded-md border-2 border-dashed border-gray-300 px-6 pt-5 pb-6">
                 <div className="space-y-1 text-center">
                   <svg
@@ -109,7 +85,7 @@ export default function CourseAddPage() {
                     />
                   </svg>
                   <div className="flex text-sm text-gray-600">
-                    <label className="relative cursor-pointer rounded-md bg-white font-medium text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:text-indigo-500">
+                    <label className="relative cursor-pointer rounded-md  font-medium focus-within:outline-none focus-within:ring-2 focus-within:ring-black focus-within:ring-offset-2 hover:text-black">
                       <span className="">Upload a file</span>
                       <input
                         id="file-upload"
@@ -127,7 +103,7 @@ export default function CourseAddPage() {
           </div>
 
           <div className="mt-6 flex justify-end">
-            <button className="transform rounded-md bg-pink-500 px-6 py-2 leading-5 text-white transition-colors duration-200 hover:bg-pink-700 focus:bg-gray-600 focus:outline-none">
+            <button className="transform rounded-md bg-black px-6 py-2 leading-5 text-white transition-colors duration-200 hover:bg-gray-400 focus:bg-gray-600 focus:outline-none">
               Save
             </button>
           </div>

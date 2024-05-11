@@ -24,7 +24,7 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
         className={`${navbarBackground} ${flexBetween} fixed top-0 z-30 w-full py-6`}
       >
         <div className={`${flexBetween} mx-auto w-5/6`}>
-          <div className={`${flexBetween} w-full gap-16`}>
+          <div className={`${flexBetween} w-full gap-20`}>
             {/* LEFT SIDE */}
             <img
               alt="logo"
@@ -61,7 +61,7 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
                     setSelectedPage={setSelectedPage}
                   />
                 </div>
-                <div className={`${flexBetween} gap-8 text-xl`}>
+                <div className={`${flexBetween} gap-8 text-xl text-black`}>
                   <p>Sign In</p>
                   <ButtonComponent
                     color={isTopOfPage ? undefined : "bg-white"}
@@ -73,7 +73,7 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
               </div>
             ) : (
               <button
-                className="rounded-full bg-secondary-500 p-2"
+                className="rounded-full bg-black p-2"
                 onClick={() => setIsMenuToggled(!isMenuToggled)}
               >
                 <Bars3Icon className="h-6 w-6 text-white" />
@@ -85,7 +85,7 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
 
       {/* MOBILE MENU MODAL */}
       {!isAboveMediumScreens && isMenuToggled && (
-        <div className="fixed right-0 bottom-0 z-40 h-full w-[300px] bg-primary-100 drop-shadow-xl">
+        <div className="fixed right-0 bottom-0 z-40 h-full w-[300px] bg-teal-100 drop-shadow-xl">
           {/* CLOSE ICON */}
           <div className="flex justify-end p-12">
             <button onClick={() => setIsMenuToggled(!isMenuToggled)}>
@@ -101,17 +101,17 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
               setSelectedPage={setSelectedPage}
             />
             <Link
-              page="Benefits"
+              page="Learn"
               selectedPage={selectedPage}
               setSelectedPage={setSelectedPage}
             />
             <Link
-              page="Our Classes"
+              page="My Courses"
               selectedPage={selectedPage}
               setSelectedPage={setSelectedPage}
             />
             <Link
-              page="Contact Us"
+              page="Teach on Learnify"
               selectedPage={selectedPage}
               setSelectedPage={setSelectedPage}
             />

@@ -7,6 +7,7 @@ import { SelectedPage } from "@/shared/types";
 import { Routes, BrowserRouter, Route } from "react-router-dom";
 import ContactUs from "./scenes/contactUs";
 import CourseAddPage from "./pages/course/add";
+import AllCourses from "./pages/course/AllCourses";
 
 function App() {
   const [selectedPage, setSelectedPage] = useState<SelectedPage>(
@@ -27,7 +28,7 @@ function App() {
   }, []);
 
   return (
-    <div className="app bg-gray-20">
+    <div className="app bg-white">
       <BrowserRouter>
         <Navbar
           isTopOfPage={isTopOfPage}
@@ -36,6 +37,7 @@ function App() {
         />
         <Routes>
           <Route path="/course/add" element={<CourseAddPage />} />
+          <Route path="/course/allcourses" element={<AllCourses />} />
           <Route
             path="/"
             element={
