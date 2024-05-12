@@ -27,35 +27,35 @@ function App() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const LoginContainer = (
-    <Routes>
-      <Route path="/login" element={<Login />} />
-      <Route path="/signup" element={<Login />} />
-    </Routes>
-  );
+  // const LoginContainer = (
+  //   <Routes>
+  //     <Route path="/login" element={<Login />} />
+  //     <Route path="/signup" element={<Login />} />
+  //   </Routes>
+  // );
 
-  const DefaultContainer = (
-    <div className="app bg-white">
-      <Navbar
-        isTopOfPage={isTopOfPage}
-        selectedPage={selectedPage}
-        setSelectedPage={setSelectedPage}
-      />
-      <Routes>
-        <Route path="/course/add" element={<CourseAddPage />} />
-        <Route path="/courses" element={<AllCourses />} />
-        <Route
-          path="/"
-          element={
-            <>
-              <Home setSelectedPage={setSelectedPage} />
-            </>
-          }
-        />
-      </Routes>
-      <Footer />
-    </div>
-  );
+  // const DefaultContainer = (
+  //   <div className="app bg-white">
+  //     <Navbar
+  //       isTopOfPage={isTopOfPage}
+  //       selectedPage={selectedPage}
+  //       setSelectedPage={setSelectedPage}
+  //     />
+  //     <Routes>
+  //       <Route path="/course/add" element={<CourseAddPage />} />
+  //       <Route path="/courses" element={<AllCourses />} />
+  //       <Route
+  //         path="/"
+  //         element={
+  //           <>
+  //             <Home setSelectedPage={setSelectedPage} />
+  //           </>
+  //         }
+  //       />
+  //     </Routes>
+  //     <Footer />
+  //   </div>
+  // );
 
   // return (
   //   <>
@@ -69,7 +69,7 @@ function App() {
   // );
 
   return (
-    <>
+    <div className="app bg-white">
       <BrowserRouter>
         <Navbar
           isTopOfPage={isTopOfPage}
@@ -93,7 +93,7 @@ function App() {
         </Routes>
         <Footer />
       </BrowserRouter>
-    </>
+    </div>
   );
 }
 
