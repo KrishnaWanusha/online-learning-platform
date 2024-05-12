@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import { SelectedPage } from "@/shared/types";
 
 import { Routes, BrowserRouter, Route } from "react-router-dom";
-import ContactUs from "./scenes/contactUs";
 import CourseAddPage from "./pages/course/add";
 import AllCourses from "./pages/course/AllCourses";
 
