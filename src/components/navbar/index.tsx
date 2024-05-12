@@ -68,10 +68,12 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
                   />
                 </div>
                 <div className={`${flexBetween} gap-8 text-xl text-black`}>
-                  <p>Sign In</p>
+                  <ButtonComponent onClick={() => navigate("/auth/login")}>
+                    Sign In
+                  </ButtonComponent>
                   <ButtonComponent
                     color={isTopOfPage ? undefined : "bg-white"}
-                    onClick={() => navigate("/login")}
+                    onClick={() => navigate("/auth/signup")}
                   >
                     Sign up
                   </ButtonComponent>
@@ -103,11 +105,13 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
           <div className="ml-[33%] flex flex-col gap-10 text-2xl">
             <Link
               page="Home"
+              to="/"
               selectedPage={selectedPage}
               setSelectedPage={setSelectedPage}
             />
             <Link
               page="Learn"
+              to="/courses"
               selectedPage={selectedPage}
               setSelectedPage={setSelectedPage}
             />
