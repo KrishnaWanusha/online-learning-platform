@@ -35,7 +35,7 @@ function App() {
   );
 
   const DefaultContainer = (
-    <>
+    <div className="app bg-white">
       <Navbar
         isTopOfPage={isTopOfPage}
         selectedPage={selectedPage}
@@ -54,18 +54,46 @@ function App() {
         />
       </Routes>
       <Footer />
-    </>
+    </div>
   );
 
+  // return (
+  //   <>
+  //     <BrowserRouter>
+  //       <Routes>
+  //         <Route path="/auth/*" element={LoginContainer} />
+  //         <Route path="/" element={DefaultContainer} />
+  //       </Routes>
+  //     </BrowserRouter>
+  //   </>
+  // );
+
   return (
-    <div className="app bg-white">
+    <>
       <BrowserRouter>
+        <Navbar
+          isTopOfPage={isTopOfPage}
+          selectedPage={selectedPage}
+          setSelectedPage={setSelectedPage}
+        />
         <Routes>
-          <Route path="/auth/*" element={LoginContainer} />
-          <Route path="/" element={DefaultContainer} />
+          <Route path="/course/add" element={<CourseAddPage />} />
+          <Route path="/courses" element={<AllCourses />} />
+          <Route
+            path="/"
+            element={
+              <>
+                <Home setSelectedPage={setSelectedPage} />
+              </>
+            }
+          />
+
+          <Route path="/auth/login" element={<Login />} />
+          <Route path="/auth/signup" element={<Login />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
-    </div>
+    </>
   );
 }
 
