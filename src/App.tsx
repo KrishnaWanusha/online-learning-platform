@@ -8,6 +8,7 @@ import { Routes, BrowserRouter, Route } from "react-router-dom";
 import CourseAddPage from "./pages/course/add";
 import AllCourses from "./pages/course/AllCourses";
 import Login from "./pages/auth/login";
+import Signup from "./pages/auth/signup";
 
 function App() {
   const [selectedPage, setSelectedPage] = useState<SelectedPage>(
@@ -89,7 +90,7 @@ function App() {
           />
 
           <Route path="/auth/login" element={<Login />} />
-          <Route path="/auth/signup" element={<Login />} />
+          <Route path="/auth/signup" element={<Signup />} />
         </Routes>
         <Footer />
       </BrowserRouter>

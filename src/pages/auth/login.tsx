@@ -1,21 +1,23 @@
 import React from "react";
+import HomeLogo from "@/assets/HomeLogo.png";
 
 export default function Login() {
   return (
-    <div className="w-full">
-      <div className="block rounded-lg bg-black shadow-lg dark:bg-white">
+    <div className="mb-12 mt-32 flex items-center justify-center">
+      <div className="mt-10 block rounded-lg bg-white shadow-lg dark:bg-white">
         <div className="lg:flex lg:flex-wrap flex">
-          <div className="h-screen w-1/2 px-4 md:px-0">
-            <div className="md:mx-6 md:p-12">
-              <div className="text-center">
+          <div className="w-full px-4  md:px-0">
+            <div className=" md:mx-6 md:px-8 md:py-2">
+              <div className="flex items-center justify-center pb-6">
                 <img
-                  className="mx-auto w-48"
-                  src="https://tecdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
                   alt="logo"
+                  src={HomeLogo}
+                  style={{
+                    width: "150px",
+                    height: "auto",
+                    marginBottom: "10px",
+                  }}
                 />
-                <h4 className="mb-12 mt-1 pb-1 text-xl font-semibold">
-                  We are The Lotus Team
-                </h4>
               </div>
 
               <form>
@@ -46,14 +48,10 @@ export default function Login() {
 
                 <div className="mb-12 pb-1 pt-1 text-center">
                   <button
-                    className="shadow-dark-3 hover:shadow-dark-2 focus:shadow-dark-2 active:shadow-dark-2 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong mb-3 inline-block w-full rounded px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-black transition duration-150 ease-in-out focus:outline-none focus:ring-0 dark:shadow-black/30"
+                    className="shadow-dark-3 hover:shadow-dark-2 focus:shadow-dark-2 active:shadow-dark-2 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong mb-3 inline-block w-full rounded bg-teal-500 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-black transition duration-150 ease-in-out focus:outline-none focus:ring-0 dark:shadow-black/30"
                     type="button"
                     data-twe-ripple-init
                     data-twe-ripple-color="light"
-                    style={{
-                      background:
-                        "linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593)",
-                    }}
                   >
                     Log in
                   </button>
@@ -62,7 +60,7 @@ export default function Login() {
                 </div>
 
                 <div className="flex items-center justify-between pb-6">
-                  <p className="me-2 mb-0">Don't have an account?</p>
+                  <p className="me-2 mr-3 mb-0">Don't have an account?</p>
                   <button
                     type="button"
                     className="border-danger text-danger hover:border-danger-600 hover:bg-danger-50/50 hover:text-danger-600 focus:border-danger-600 focus:bg-danger-50/50 focus:text-danger-600 active:border-danger-700 active:text-danger-700 dark:hover:bg-rose-950 dark:focus:bg-rose-950 inline-block rounded border-2 px-6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal transition duration-150 ease-in-out focus:outline-none focus:ring-0"
@@ -73,26 +71,6 @@ export default function Login() {
                   </button>
                 </div>
               </form>
-            </div>
-          </div>
-
-          <div
-            className="lg:rounded-e-lg lg:rounded-bl-none flex h-screen w-1/2 items-center rounded-b-lg"
-            style={{
-              background:
-                "linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593)",
-            }}
-          >
-            <div className="px-4 py-6 text-white md:mx-6 md:p-12">
-              <h4 className="mb-6 text-xl font-semibold">
-                We are more than just a company
-              </h4>
-              <p className="text-sm">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat.
-              </p>
             </div>
           </div>
         </div>
