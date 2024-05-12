@@ -6,7 +6,7 @@ import { SelectedPage } from "@/shared/types";
 
 import { Routes, BrowserRouter, Route } from "react-router-dom";
 import CourseAddPage from "./pages/course/add";
-import AllCourses from "./pages/course/AllCourses";
+import AllCourses from "./pages/course/all";
 import Login from "./pages/auth/login";
 import Signup from "./pages/auth/signup";
 import ViewCourse from "./pages/course/ViewCourse";

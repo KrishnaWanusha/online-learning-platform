@@ -1,41 +1,19 @@
-import React from "react";
+import { currencyFormatter } from "@/helpers/global";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
 const AllCourses = () => {
-  // Hardcoded course details
-  const courses = [
-    {
-      title: "Apple Watch Series 7 GPS, Aluminium Case, Starlight Sport",
-      image: "/docs/images/products/apple-watch.png",
-      coordinator: "Hiruni Perera",
-      category: "Business",
-      price: "$599",
-    },
-    {
-      title: "Apple Watch Series 7 GPS, Aluminium Case, Starlight Sport",
-      image: "/docs/images/products/apple-watch.png",
-      coordinator: "Hiruni Perera",
-      category: "Business",
-      price: "$599",
-    },
-    {
-      title: "Apple Watch Series 7 GPS, Aluminium Case, Starlight Sport",
-      image: "/docs/images/products/apple-watch.png",
-      coordinator: "Hiruni Perera",
-      category: "Business",
-      price: "$599",
-    },
-    {
-      title: "Apple Watch Series 7 GPS, Aluminium Case, Starlight Sport",
-      image: "/docs/images/products/apple-watch.png",
-      coordinator: "Hiruni Perera",
-      category: "Business",
-      price: "$599",
-    },
-  ];
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:4000/course/all")
+      .then((res) => setData(res.data));
+  }, []);
 
   return (
     <div className="lg:grid-cols-3 mt-28 mb-9 grid grid-cols-1 gap-2 px-6 sm:grid-cols-3">
-      {courses.map((course, index) => (
+      {data?.map((course: any, index: number) => (
         <div
           key={index}
           className="mb-8 w-full max-w-sm rounded-lg border border-gray-200 bg-white shadow dark:border-gray-700 dark:bg-gray-800"
@@ -55,7 +33,7 @@ const AllCourses = () => {
             </a>
             <a href="#">
               <h3 className="text-base  tracking-tight text-gray-900 dark:text-white">
-                {course.coordinator}
+                {course.language}
               </h3>
             </a>
             <a href="#">
@@ -66,7 +44,7 @@ const AllCourses = () => {
 
             <div className="flex items-center justify-between">
               <span className="text-lg font-semibold text-gray-900 dark:text-white">
-                {course.price}
+                {currencyFormatter(course.price)}
               </span>
               <a
                 href="#"
