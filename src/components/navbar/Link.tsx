@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
 import { SelectedPage } from "@/shared/types";
-import AnchorLink from "react-anchor-link-smooth-scroll";
+import { Link } from "react-router-dom";
 
 type Props = {
   page: string;
   selectedPage: SelectedPage;
   setSelectedPage: (value: SelectedPage) => void;
+  to?: string;
 };
 
-const Link = ({ page, selectedPage, setSelectedPage }: Props) => {
+const NavLink = ({ page, selectedPage, setSelectedPage, to }: Props) => {
   const lowerCasePage = page.toLowerCase().replace(/ /g, "") as SelectedPage;
 
   const [isTopOfPage, setIsTopOfPage] = useState<boolean>(true);
@@ -25,7 +26,7 @@ const Link = ({ page, selectedPage, setSelectedPage }: Props) => {
   }, []);
 
   return (
-    <AnchorLink
+    <Link
       className={`${
         selectedPage === lowerCasePage
           ? isTopOfPage
@@ -35,12 +36,12 @@ const Link = ({ page, selectedPage, setSelectedPage }: Props) => {
       }
         hover:text-gray transition duration-500
       `}
-      href={`#${lowerCasePage}`}
+      to={to ?? ""}
       onClick={() => setSelectedPage(lowerCasePage)}
     >
       {page}
-    </AnchorLink>
+    </Link>
   );
 };
 
-export default Link;
+export default NavLink;

@@ -5,6 +5,7 @@ import Logo from "@/assets/HomeLogo.png";
 import HomePageGraphic from "@/assets/HomePageGraphic.png";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import { motion } from "framer-motion";
+import ButtonComponent from "@/components/ButtonComponent";
 
 type Props = {
   setSelectedPage: (value: SelectedPage) => void;
@@ -67,16 +68,7 @@ const Home = ({ setSelectedPage }: Props) => {
               visible: { opacity: 1, x: 0 },
             }}
           >
-            <ActionButton setSelectedPage={setSelectedPage}>
-              Join Now
-            </ActionButton>
-            {/* <AnchorLink
-              className="text-sm font-bold text-primary-500 underline hover:text-secondary-500"
-              onClick={() => setSelectedPage(SelectedPage.ContactUs)}
-              href={`#${SelectedPage.ContactUs}`}
-            >
-              <p>Learn More</p>
-            </AnchorLink> */}
+            <ButtonComponent>Join Now</ButtonComponent>
           </motion.div>
         </div>
 

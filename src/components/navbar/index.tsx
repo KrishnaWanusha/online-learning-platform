@@ -5,6 +5,7 @@ import Link from "./Link";
 import { SelectedPage } from "@/shared/types";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import ButtonComponent from "@/components/ButtonComponent";
+import { useNavigate } from "react-router-dom";
 
 type Props = {
   isTopOfPage: boolean;
@@ -18,6 +19,7 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
   const isAboveMediumScreens = useMediaQuery("(min-width: 1060px)");
   const navbarBackground = isTopOfPage ? "" : "bg-teal-500 drop-shadow";
 
+  const navigate = useNavigate();
   return (
     <nav>
       <div
@@ -42,21 +44,25 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
                 >
                   <Link
                     page="Home"
+                    to="/"
                     selectedPage={selectedPage}
                     setSelectedPage={setSelectedPage}
                   />
                   <Link
                     page="Learn"
+                    to="/courses"
                     selectedPage={selectedPage}
                     setSelectedPage={setSelectedPage}
                   />
                   <Link
                     page="My Courses"
+                    to="/"
                     selectedPage={selectedPage}
                     setSelectedPage={setSelectedPage}
                   />
                   <Link
                     page="Teach on Learnify"
+                    to="/"
                     selectedPage={selectedPage}
                     setSelectedPage={setSelectedPage}
                   />
@@ -65,7 +71,7 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
                   <p>Sign In</p>
                   <ButtonComponent
                     color={isTopOfPage ? undefined : "bg-white"}
-                    setSelectedPage={setSelectedPage}
+                    onClick={() => navigate("/login")}
                   >
                     Sign up
                   </ButtonComponent>
