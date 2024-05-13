@@ -45,7 +45,6 @@ export const Email = () => {
           <li>
             <strong>Payment Method :</strong> Credit Card
           </li>
-          {/* Add more payment details here */}
         </ul>
         <p style={{ marginBottom: "20px" }}>
           If you have any questions or concerns regarding your payment or the
@@ -54,15 +53,6 @@ export const Email = () => {
         <p style={{ marginBottom: "60px" }}>
           Thank you for choosing our platform for your learning needs.
         </p>
-        {/* <p>
-          Sincerely,
-          <br />
-          [Your Name]
-          <br />
-          [Your Position]
-          <br />
-          [Your Company/Organization]
-        </p> */}
         <img
           src={logo}
           alt="Logo"
