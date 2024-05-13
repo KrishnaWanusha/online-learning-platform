@@ -10,6 +10,7 @@ import AllCourses from "./pages/course/all";
 import Login from "./pages/auth/login";
 import Signup from "./pages/auth/signup";
 import ViewCourse from "./pages/course/ViewCourse";
+import { Paymentstatus } from "./pages/payment/paystatus";
 
 function App() {
   const [selectedPage, setSelectedPage] = useState<SelectedPage>(
@@ -82,6 +83,7 @@ function App() {
           <Route path="/course/add" element={<CourseAddPage />} />
           <Route path="/courses" element={<AllCourses />} />
           <Route path="/courses/viewcourse" element={<ViewCourse />} />
+          <Route path="/payment/status" element={<Paymentstatus />} />
           <Route
             path="/"
             element={
