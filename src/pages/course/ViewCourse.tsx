@@ -1,5 +1,6 @@
 import ButtonComponent from "@/components/ButtonComponent";
 import { useAuth } from "@/contexts/auth.context";
+import { currencyFormatter } from "@/helpers/global";
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
 import React, { useCallback, useEffect, useState } from "react";
@@ -62,7 +63,7 @@ const ViewCourse = () => {
         </div>
         <div className="px-6 pb-6 text-left">
           <p className="mb-2 text-base text-gray-900 dark:text-white">
-            Coordinator: {state?.language}
+            Language: {state?.language}
           </p>
           <p className="mb-2 text-base text-gray-900 dark:text-white">
             Category: {state?.category}
@@ -71,10 +72,10 @@ const ViewCourse = () => {
             Description: {state?.description}
           </p>
           <p className="mb-2 text-base text-gray-900 dark:text-white">
-            Date: {state?.duration}
+            Duration: {state?.duration}
           </p>
           <p className="mb-4 text-lg font-semibold text-gray-900 dark:text-white">
-            Price: {state?.price}
+            {currencyFormatter(state?.price ?? 0)}
           </p>
           <ButtonComponent onClick={makePayment}>Buy Now</ButtonComponent>
         </div>

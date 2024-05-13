@@ -6,7 +6,9 @@ const Footer = () => {
   return (
     <footer
       className={` ${
-        location.pathname === "/" || location.pathname.startsWith("/course/")
+        location.pathname === "/" ||
+        location.pathname.startsWith("/course/") ||
+        location.pathname.startsWith("/courses")
           ? ""
           : "fixed"
       } bottom-0 bg-teal-500  py-16`}
