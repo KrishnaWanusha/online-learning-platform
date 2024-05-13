@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
 import Logo from "@/assets/logo.png";
 import Link from "./Link";
@@ -6,6 +6,7 @@ import { SelectedPage } from "@/shared/types";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import ButtonComponent from "@/components/ButtonComponent";
 import { useNavigate } from "react-router-dom";
+import AuthContext, { useAuth } from "@/contexts/auth.context";
 
 type Props = {
   isTopOfPage: boolean;
@@ -14,12 +15,18 @@ type Props = {
 };
 
 const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
+  const { user, setUser } = useContext(AuthContext);
+  const navigate = useNavigate();
   const flexBetween = "flex items-center justify-between";
   const [isMenuToggled, setIsMenuToggled] = useState<boolean>(false);
   const isAboveMediumScreens = useMediaQuery("(min-width: 1060px)");
   const navbarBackground = isTopOfPage ? "" : "bg-teal-500 drop-shadow";
 
-  const navigate = useNavigate();
+  const signOut = () => {
+    setUser(undefined);
+    navigate("/auth/login");
+  };
+
   return (
     <nav>
       <div
@@ -68,13 +75,26 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
                   />
                 </div>
                 <div className={`${flexBetween} gap-8 text-xl text-black`}>
-                  <p>Sign In</p>
-                  <ButtonComponent
-                    color={isTopOfPage ? undefined : "bg-white"}
-                    onClick={() => navigate("/login")}
-                  >
-                    Sign up
-                  </ButtonComponent>
+                  {!user?.accessToken ? (
+                    <>
+                      <ButtonComponent onClick={() => navigate("/auth/login")}>
+                        Sign In
+                      </ButtonComponent>
+                      <ButtonComponent
+                        color={isTopOfPage ? undefined : "bg-white"}
+                        onClick={() => navigate("/auth/signup")}
+                      >
+                        Sign up
+                      </ButtonComponent>
+                    </>
+                  ) : (
+                    <ButtonComponent
+                      color={isTopOfPage ? undefined : "bg-white"}
+                      onClick={signOut}
+                    >
+                      Logout
+                    </ButtonComponent>
+                  )}
                 </div>
               </div>
             ) : (
@@ -103,11 +123,13 @@ const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
           <div className="ml-[33%] flex flex-col gap-10 text-2xl">
             <Link
               page="Home"
+              to="/"
               selectedPage={selectedPage}
               setSelectedPage={setSelectedPage}
             />
             <Link
               page="Learn"
+              to="/courses"
               selectedPage={selectedPage}
               setSelectedPage={setSelectedPage}
             />

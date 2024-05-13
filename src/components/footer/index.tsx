@@ -1,8 +1,18 @@
 import Logo from "@/assets/logo.png";
+import { useLocation } from "react-router-dom";
 
 const Footer = () => {
+  const location = useLocation();
   return (
-    <footer className="bg-teal-500  py-16">
+    <footer
+      className={` ${
+        location.pathname === "/" ||
+        location.pathname.startsWith("/course/") ||
+        location.pathname.startsWith("/courses")
+          ? ""
+          : "fixed"
+      } bottom-0 bg-teal-500  py-16`}
+    >
       <div className="justify-content mx-auto w-5/6 gap-16 md:flex">
         <div className="mt-16 basis-1/2 md:mt-0">
           <img
@@ -21,7 +31,7 @@ const Footer = () => {
         <div className="mt-16 basis-1/4 md:mt-0">
           <h4 className="font-bold">Links</h4>
           <p className="my-5">Abot US</p>
-          <p className="my-5">learnifyStudentService123@gmail.com</p>
+          <p className="my-5">learnifyStudentService@gmail.com</p>
           <p>learnifyFacebookstudent2.com</p>
         </div>
         <div className="mt-16 basis-1/4 md:mt-0">
