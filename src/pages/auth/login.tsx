@@ -1,7 +1,55 @@
-import React from "react";
+import React, { useCallback, useContext, useState } from "react";
 import HomeLogo from "@/assets/HomeLogo.png";
+import axios, { AxiosError } from "axios";
+import { useToasts } from "react-toast-notifications";
+import { useNavigate } from "react-router-dom";
+import AuthContext from "@/contexts/auth.context";
 
 export default function Login() {
+  const navigate = useNavigate();
+  const { addToast } = useToasts();
+  const [state, setState] = useState<any>({});
+  const { setUser } = useContext(AuthContext);
+
+  const login = useCallback(() => {
+    axios
+      .post("http://localhost:5000/auth/login", { ...state })
+      .then((res) => {
+        if (res.data) {
+          addToast("Login Successfull", {
+            appearance: "success",
+            autoDismiss: true,
+          });
+          setUser(res.data);
+          navigate("/");
+        }
+        if (res?.data?.error) {
+          addToast(res?.data?.error, {
+            appearance: "success",
+            autoDismiss: true,
+          });
+          navigate("/auth/login");
+        }
+      })
+      .catch((error) => {
+        if (
+          error.response &&
+          error.response.data &&
+          error.response.data.error
+        ) {
+          addToast(error.response.data.error, {
+            appearance: "error",
+            autoDismiss: true,
+          });
+        } else {
+          addToast(error.message, {
+            appearance: "error",
+            autoDismiss: true,
+          });
+        }
+      });
+  }, [state, addToast, navigate, setUser]);
+
   return (
     <div className="mb-12 mt-32 flex items-center justify-center">
       <div className="mt-10 block rounded-lg bg-white shadow-lg dark:bg-white">
@@ -28,6 +76,9 @@ export default function Login() {
                     className="peer-focus:text-primary dark:autofill:shadow-autofill dark:peer-focus:text-primary peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[twe-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-black dark:placeholder:text-neutral-300 [&:not([data-twe-input-placeholder-active])]:placeholder:opacity-0"
                     id="exampleFormControlInput1"
                     placeholder="Username"
+                    onChange={(e) =>
+                      setState((s: any) => ({ ...s, username: e.target.value }))
+                    }
                   />
                   <label className="peer-focus:text-primary dark:peer-focus:text-primary pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-data-[twe-input-state-active]:-translate-y-[0.9rem] peer-data-[twe-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-black">
                     Username
@@ -40,6 +91,9 @@ export default function Login() {
                     className="peer-focus:text-primary dark:autofill:shadow-autofill dark:peer-focus:text-primary peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[twe-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-black dark:placeholder:text-neutral-300 [&:not([data-twe-input-placeholder-active])]:placeholder:opacity-0"
                     id="exampleFormControlInput11"
                     placeholder="Password"
+                    onChange={(e) =>
+                      setState((s: any) => ({ ...s, password: e.target.value }))
+                    }
                   />
                   <label className="peer-focus:text-primary dark:peer-focus:text-primary pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-data-[twe-input-state-active]:-translate-y-[0.9rem] peer-data-[twe-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-black">
                     Password
@@ -52,6 +106,7 @@ export default function Login() {
                     type="button"
                     data-twe-ripple-init
                     data-twe-ripple-color="light"
+                    onClick={login}
                   >
                     Log in
                   </button>

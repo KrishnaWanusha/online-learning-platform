@@ -3,9 +3,11 @@ import React, { useCallback, useState } from "react";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "@/contexts/auth.context";
 
 export default function CourseAddPage() {
   const navigate = useNavigate();
+  const { user } = useAuth();
   const [image, setImage] = useState<any>();
   const [state, setState] = useState<any>({
     category: "Information Technology",
@@ -21,10 +23,19 @@ export default function CourseAddPage() {
     uploadBytes(storageRef, image)
       .then(() => getDownloadURL(storageRef))
       .then((url) => {
-        return axios.post("http://localhost:4000/course/add", {
-          ...state,
-          image: url,
-        });
+        return axios.post(
+          "http://localhost:5000/course/add",
+          {
+            ...state,
+            image: url,
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${user?.accessToken}`,
+              "Content-Type": "application/json",
+            },
+          }
+        );
       })
       .then((res) => {
         if (res.data) navigate("/courses");

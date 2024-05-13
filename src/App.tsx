@@ -12,6 +12,8 @@ import Signup from "./pages/auth/signup";
 import ViewCourse from "./pages/course/ViewCourse";
 import { Paymentstatus } from "./pages/payment/paystatus";
 import { Email } from "./pages/payment/email";
+import { ToastProvider } from "react-toast-notifications";
+import AuthContext, { AuthProvider } from "./contexts/auth.context";
 
 function App() {
   const [selectedPage, setSelectedPage] = useState<SelectedPage>(
@@ -31,74 +33,37 @@ function App() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // const LoginContainer = (
-  //   <Routes>
-  //     <Route path="/login" element={<Login />} />
-  //     <Route path="/signup" element={<Login />} />
-  //   </Routes>
-  // );
-
-  // const DefaultContainer = (
-  //   <div className="app bg-white">
-  //     <Navbar
-  //       isTopOfPage={isTopOfPage}
-  //       selectedPage={selectedPage}
-  //       setSelectedPage={setSelectedPage}
-  //     />
-  //     <Routes>
-  //       <Route path="/course/add" element={<CourseAddPage />} />
-  //       <Route path="/courses" element={<AllCourses />} />
-  //       <Route
-  //         path="/"
-  //         element={
-  //           <>
-  //             <Home setSelectedPage={setSelectedPage} />
-  //           </>
-  //         }
-  //       />
-  //     </Routes>
-  //     <Footer />
-  //   </div>
-  // );
-
-  // return (
-  //   <>
-  //     <BrowserRouter>
-  //       <Routes>
-  //         <Route path="/auth/*" element={LoginContainer} />
-  //         <Route path="/" element={DefaultContainer} />
-  //       </Routes>
-  //     </BrowserRouter>
-  //   </>
-  // );
-
   return (
     <div className="app bg-white">
       <BrowserRouter>
-        <Navbar
-          isTopOfPage={isTopOfPage}
-          selectedPage={selectedPage}
-          setSelectedPage={setSelectedPage}
-        />
-        <Routes>
-          <Route path="/course/add" element={<CourseAddPage />} />
-          <Route path="/courses" element={<AllCourses />} />
-          <Route path="/courses/viewcourse" element={<ViewCourse />} />
-          <Route path="/payment/status" element={<Paymentstatus />} />
-          <Route path="/payment/email" element={<Email />} />
-          <Route
-            path="/"
-            element={
-              <>
-                <Home setSelectedPage={setSelectedPage} />
-              </>
-            }
-          />
+        <AuthProvider>
+          <ToastProvider>
+            <Navbar
+              isTopOfPage={isTopOfPage}
+              selectedPage={selectedPage}
+              setSelectedPage={setSelectedPage}
+            />
+            <Routes>
+              <Route path="/course/add" element={<CourseAddPage />} />
+              <Route path="/courses" element={<AllCourses />} />
+              <Route path="/course/:id" element={<ViewCourse />} />
+              <Route path="/payment/status" element={<Paymentstatus />} />
+              <Route path="/payment/email" element={<Email />} />
+              <Route
+                path="/"
+                element={
+                  <>
+                    <Home setSelectedPage={setSelectedPage} />
+                  </>
+                }
+              />
 
-          <Route path="/auth/login" element={<Login />} />
-          <Route path="/auth/signup" element={<Signup />} />
-        </Routes>
-        <Footer />
+              <Route path="/auth/login" element={<Login />} />
+              <Route path="/auth/signup" element={<Signup />} />
+            </Routes>
+            <Footer />
+          </ToastProvider>
+        </AuthProvider>
       </BrowserRouter>
     </div>
   );

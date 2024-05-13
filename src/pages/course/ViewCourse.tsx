@@ -1,52 +1,82 @@
-import React from "react";
+import ButtonComponent from "@/components/ButtonComponent";
+import { useAuth } from "@/contexts/auth.context";
+import { loadStripe } from "@stripe/stripe-js";
+import axios from "axios";
+import React, { useCallback, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 const ViewCourse = () => {
-  // Hardcoded course details
-  const course = {
-    title: "Apple Watch Series 7 GPS, ",
-    image: "/docs/images/products/apple-watch.png",
-    coordinator: "Hiruni Perera",
-    category: "Business",
-    description: "",
-    date: "2024/05/10",
-    price: "$599",
-  };
+  const { id } = useParams();
+  const { user } = useAuth();
+  const [state, setState] = useState<any>({});
+
+  const makePayment = useCallback(async () => {
+    const stripe = await loadStripe(
+      "pk_test_51PDQlFJwc1F7FQXgZmjtg2R5KBXUksVV7plExES7AS1jib1ppG0DZnyINSTZWzxKUYzSDstIp60iIbTaGq3QZyIw00aeCzOs13"
+    );
+
+    await axios
+      .post(
+        "http://localhost:5000/payment/create",
+        {
+          data: state,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${user?.accessToken}`,
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((res) => {
+        const session = res.data;
+        const result = stripe?.redirectToCheckout({
+          sessionId: session.id,
+        });
+      });
+  }, [state, loadStripe, user]);
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:5000/course/get/${id}`, {
+        headers: {
+          Authorization: `Bearer ${user?.accessToken}`,
+          "Content-Type": "application/json",
+        },
+      })
+      .then((res) => setState(res.data));
+  }, []);
 
   return (
     <div className="mx-auto flex flex-col items-center justify-center">
-      <div className=" container  mt-28 mb-8 overflow-hidden rounded-lg border border-gray-300 shadow-lg">
+      <div className=" container mt-28 mb-8 overflow-hidden rounded-lg border border-gray-300 shadow-lg dark:bg-gray-800">
         <h1 className="mt-4 mb-6 px-6 text-3xl font-semibold text-gray-900 dark:text-white">
-          {course.title}
+          {state?.title}
         </h1>
-        <div className="mb-4 h-72 w-72">
+        <div className="mx-auto mb-4 flex h-72 w-full items-center justify-center">
           <img
-            className="h-full w-full rounded-lg object-cover "
-            src={course.image}
+            className="h-full rounded-lg object-cover "
+            src={state?.image}
             alt="product image"
           />
         </div>
         <div className="px-6 pb-6 text-left">
           <p className="mb-2 text-base text-gray-900 dark:text-white">
-            Coordinator: {course.coordinator}
+            Coordinator: {state?.language}
           </p>
           <p className="mb-2 text-base text-gray-900 dark:text-white">
-            Category: {course.category}
+            Category: {state?.category}
           </p>
           <p className="mb-2 text-base text-gray-900 dark:text-white">
-            Description: {course.description}
+            Description: {state?.description}
           </p>
           <p className="mb-2 text-base text-gray-900 dark:text-white">
-            Date: {course.date}
+            Date: {state?.duration}
           </p>
           <p className="mb-4 text-lg font-semibold text-gray-900 dark:text-white">
-            Price: {course.price}
+            Price: {state?.price}
           </p>
-          <a
-            href="#"
-            className="  mb-6 rounded-lg bg-teal-500 px-8 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-          >
-            Buy Now
-          </a>
+          <ButtonComponent onClick={makePayment}>Buy Now</ButtonComponent>
         </div>
       </div>
     </div>
