@@ -45,6 +45,7 @@ export const Paymentstatus = () => {
             <p className="mb-3 text-center font-normal text-gray-500 dark:text-gray-400">
               Your payment was unsuccessful. Please try again.
             </p>
+            {/* Return */}
             <a href="/">return to home</a>
           </div>
         ) : (
