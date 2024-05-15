@@ -38,6 +38,7 @@ export const Paymentstatus = () => {
         {success === false ? (
           <div className="flex flex-col items-center">
             <img src={incorrect} alt="Unsuccessful" className="mb-3" />
+            {/* Header */}
             <h5 className="mb-2 text-2xl font-semibold tracking-tight text-red-600 dark:text-red-400">
               Payment Unsuccessful !!
             </h5>
